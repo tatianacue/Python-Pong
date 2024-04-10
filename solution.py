@@ -41,14 +41,14 @@ def draw(win, paddles):
     pygame.display.update()
 
 def handle_paddle_movement(keys, left_paddle, right_paddle):
-    if keys[pygame.K_w]:    # w goes up for left paddle
+    if keys[pygame.K_w] and left_paddle.y - left_paddle.VEL >= 0:    # w goes up for left paddle (and checks for border)
         left_paddle.move(up=True)
-    if keys[pygame.K_s]:    # s goes down for left paddle
+    if keys[pygame.K_s] and left_paddle.y + left_paddle.VEL + left_paddle.height <= HEIGHT:    # s goes down for left paddle
         left_paddle.move(up=False)
 
-    if keys[pygame.K_UP]:   # up arrow for right paddle
+    if keys[pygame.K_UP] and right_paddle.y - right_paddle.VEL >= 0:   # up arrow for right paddle
         right_paddle.move(up=True)
-    if keys[pygame.K_DOWN]: # down arrow for right paddle
+    if keys[pygame.K_DOWN] and right_paddle.y + right_paddle.VEL + right_paddle.height <= HEIGHT: # down arrow for right paddle
         right_paddle.move(up=False)
     
 
